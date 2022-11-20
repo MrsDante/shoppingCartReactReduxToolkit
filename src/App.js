@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Navigate, Routes, Route } from 'react-router-d
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
 import Home from './components/Home';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Routes>
           <Route path="/cart" element={<Cart />} />
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />}
+    />
         </Routes>
       </Router>
     </div>
