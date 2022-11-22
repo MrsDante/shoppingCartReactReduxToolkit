@@ -63,9 +63,21 @@ const cartSlice = createSlice({
         }
         localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
       },
+      increaseCart(state, action) {
+        const itemIndex = state.cartItems.findIndex(
+            cartItem => cartItem.id === action.payload.id
+        )
+        state.cartItems[itemIndex].cardQuabtity += 1;
+
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+    
+            toast.info(`Количество ${action.payload.title} увеличено на единицу`, {
+                position: 'bottom-left',
+            });
+      }
   },
 });
 
-export const { addToCart, removeFromCart, decreaseCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, decreaseCart, increaseCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
