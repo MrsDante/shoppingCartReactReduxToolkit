@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { getAllProducts, productsFetch } from '../features/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../features/cartSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,11 @@ const Home = () => {
   }, []);
 
   console.log(products)
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    console.log(product)
+  };
 
   return (
     <div className="home-container">
@@ -26,7 +32,7 @@ const Home = () => {
               <span>{product.description}</span>
               <span className="price">${product.price}</span>
             </div>
-            <button>Добавить в корзину</button>
+            <button onClick={() => handleAddToCart(product)}>Добавить в корзину</button>
           </div>))}
       </div>
       </>
