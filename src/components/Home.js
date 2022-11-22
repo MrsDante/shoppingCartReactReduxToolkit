@@ -2,19 +2,22 @@ import React, { useEffect } from 'react';
 import { getAllProducts, productsFetch } from '../features/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../features/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const products = useSelector(getAllProducts);
 
   useEffect(() => {
-     dispatch(productsFetch())
+     dispatch(productsFetch());
   }, []);
 
   console.log(products)
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+    navigate('/cart');
     console.log(product)
   };
 
