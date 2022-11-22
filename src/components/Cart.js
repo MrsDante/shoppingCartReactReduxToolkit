@@ -28,7 +28,39 @@ console.log(cart)
             </Link>
           </div>
         </div>
-      ) : (<></>)}
+      ) : (
+        <div>
+          <div className="titles">
+            <h3 className="product-title">Товар</h3>
+            <h3 className="price">Цена</h3>
+            <h3 className="quantity">Количество</h3>
+            <h3 className="total">Итого</h3>
+          </div>
+          <div className="cart-items">
+            {cart.cartItems?.map(cartItem => (
+              <div className="cart-item" key={cartItem.id}>
+                <div className="cart-product">
+                  <img src={cartItem.image} alt={cartItem.title} />
+                  <div>
+                    <h3>{cartItem.title}</h3>
+                    <p>{cartItem.description}</p>
+                    <button>Удалить</button>
+                  </div>
+                </div>
+                <div className="cart-product-price">${cartItem.price}</div>
+                <div className="cart-product-quantity">
+                  <button>-</button>
+                  <div className="count">{cartItem.cardQuabtity}</div>
+                  <button>+</button>
+                </div>
+                <div className="cart-product-total-price">
+                  ${cartItem.price * cartItem.cardQuabtity}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
