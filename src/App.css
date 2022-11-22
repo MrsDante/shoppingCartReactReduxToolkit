@@ -305,3 +305,12 @@
 .start-shopping a span {
   margin-left: 0.5rem;
 } 
+
+.cart-empty {
+  font-size: 20px;
+  margin-top: 2rem;
+  color: rgb(84, 84, 84);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
