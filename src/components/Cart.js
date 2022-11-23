@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { decreaseCart, increaseCart, removeFromCart } from '../features/cartSlice';
+import { addToCart, decreaseCart, removeFromCart } from '../features/cartSlice';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Cart = () => {
   };
 
   const handleIncreaseCart = (cartItem) => {
-    dispatch(increaseCart(cartItem));
+    dispatch(addToCart(cartItem));
   }
 
 console.log(cart)
