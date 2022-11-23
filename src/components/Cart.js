@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart, decreaseCart, removeFromCart } from '../features/cartSlice';
+import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from '../features/cartSlice';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,16 @@ const Cart = () => {
 
   const handleIncreaseCart = (cartItem) => {
     dispatch(addToCart(cartItem));
-  }
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart())
+  };
+
+  useEffect(() => {
+    dispatch(getTotals());
+    console.log(cart)
+  }, [cart, dispatch]);
 
 console.log(cart)
   return (
@@ -75,7 +84,7 @@ console.log(cart)
             ))}
           </div>
           <div className="cart-summary">
-            <button className="clear-cart">Очистить корзину</button>
+            <button onClick={() => handleClearCart()} className="clear-cart">Очистить корзину</button>
             <div className="cart-checkout">
               <div className="subtotal">
                 <span>Итог</span>

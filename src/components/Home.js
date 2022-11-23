@@ -13,6 +13,7 @@ const Home = () => {
      dispatch(productsFetch());
   }, []);
 
+
   console.log(products)
 
   const handleAddToCart = (product) => {
